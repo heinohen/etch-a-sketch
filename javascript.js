@@ -63,14 +63,15 @@ function creationOfGrid(size, choice) {
             const div = document.createElement('div');
             div.setAttribute('id', 'theDiv');
             if (choice == "rainbow") {
-                let rndm = randomNumber(colorlist.length)
+                let red = randomNumber(256);
+                let green = randomNumber(256);
+                let blue = randomNumber(256);
                 div.addEventListener("mouseenter", function(e) {
-                    let tiil = colorlist[rndm];
-                    e.target.style.background = tiil;
+                    e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
                 });
             } else {
                 div.addEventListener("mouseenter", function(e) {
-                    e.target.style.background = choice;
+                    e.target.style.backgroundColor = choice;
                 });
             }
             
@@ -98,7 +99,7 @@ function resetGrid() {
     removeAll()
     const squares = document.querySelectorAll('#theDiv');
     squares.forEach((square) => {
-        square.style.background = "white";
+        square.style.backgroundColor = "white";
     });
     creationOfGrid(size, "blue")
     
