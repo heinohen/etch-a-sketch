@@ -6,22 +6,37 @@
 
 body {
     height: 100vh;
-    background-color: gray;
+    background-color: rgba(165, 10, 10, 0.921);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+button {
+    height: 100px;
+    width: 100px;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+button:hover {
+    background-color: antiquewhite;
+}
+
 .settings {
-    background-color: lightgreen;
+    margin: 20px;
+    color: gold;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid {
     height: 960px;
     gap: 2px;
+    border: 3px;
+    border-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +48,16 @@ body {
     display: flex;
     flex-direction: row;
 }
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+}
+
+
 
 .footer {
     display: flex;
