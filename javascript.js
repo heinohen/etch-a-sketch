@@ -1,7 +1,11 @@
 
 // create page structure
 const setup = document.querySelector("#setup");
-const container = document.querySelector("#container");
+const mainContainer = document.querySelector("#mainContainer");
+const container = document.createElement('div');
+container.setAttribute('id', 'grid')
+container.setAttribute('class','grid')
+mainContainer.appendChild(container);
 const controls = document.querySelector('#conts')
 const footer = document.querySelector('#footer');
 
