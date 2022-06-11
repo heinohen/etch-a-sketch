@@ -50,7 +50,6 @@ button:hover {
     border: 10px;
     border-color: black;
     display: flex;
-    overflow: scroll;
 
 }
 
