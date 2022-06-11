@@ -11,10 +11,11 @@ headText.innerHTML = "HELLO!";
 setup.appendChild(headText);
 
 // submit button
-const submitButton = document.createElement('button');
-submitButton.setAttribute('id', 'submit');
-submitButton.innerHTML = "SUBMIT!";
-setup.appendChild(submitButton);
+const resizeButton = document.createElement('button');
+resizeButton.setAttribute('id', 'submit');
+resizeButton.innerHTML = "RESIZE!";
+resizeButton.addEventListener('click', resizeGrid);
+setup.appendChild(resizeButton);
 
 // reset button
 const resetButton = document.createElement('button');
@@ -25,26 +26,26 @@ setup.appendChild(resetButton);
 
 // create grid
 let size = 16; // default size!
+creationOfGrid(size);
 
-for (let i = 0; i < size; i++) {
-    console.log('creating rows...', i);
-    const rowContainer = document.createElement('div');
-    rowContainer.setAttribute('class', 'row');
-    container.appendChild(rowContainer)
-
-    for (let j = 0; j < size; j++) {
-        console.log('creating cols...', j);
-
-
-        const div = document.createElement('div');
-        div.setAttribute('id', 'theDiv');
-        div.addEventListener("mouseenter", function(e) {
-            e.target.style.background = "blue";
-        });
-        rowContainer.appendChild(div);
-    }
+function creationOfGrid(size) {
+    for (let i = 0; i < size; i++) {
+        const rowContainer = document.createElement('div');
+        rowContainer.setAttribute('class', 'row');
+        rowContainer.setAttribute('id','rowID');
+        container.appendChild(rowContainer)
     
+        for (let j = 0; j < size; j++) {
+            const div = document.createElement('div');
+            div.setAttribute('id', 'theDiv');
+            div.addEventListener("mouseenter", function(e) {
+                e.target.style.background = "blue";
+            });
+            rowContainer.appendChild(div);
+        }   
+    }
 }
+
 
 //reset grid
 function resetGrid() {
@@ -54,6 +55,30 @@ function resetGrid() {
     });
     
 }
+
+//helper function for resizeGrid, removes all elements in grid
+function removeAll() {
+    const childs = document.querySelectorAll('#rowID');
+    childs.forEach((child) => {
+        container.removeChild(child);
+    });
+}
+
+
+//function of resize button
+
+function resizeGrid() {
+    removeAll();
+    let answer = prompt("Give length of side. Maximum is 64. Minimum is 2. Default is 16.");
+
+    if (isNaN(answer) || answer < 2 || answer > 64) {
+        alert("you did not follow instructions! Resetting to default.")
+        creationOfGrid(16);
+    } else {
+        creationOfGrid(answer);
+    }
+}
+    
 
 
 
